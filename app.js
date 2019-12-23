@@ -21,7 +21,7 @@ let options = {
 };
 // Use native Promises
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/socialMongoDB', options).then(
+mongoose.connect('mongodb://mongo:27017/socialMongoDB', options).then(
   () => {
     console.log("connect DB successfully");
   },
