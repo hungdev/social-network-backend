@@ -1,0 +1,431 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Mobile shop
+  description: Mobile shop API
+  contact:
+      name: Example
+      url: 'https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.0'
+servers:
+  - url: http://hungvu.net
+    description: API
+components:
+  securitySchemes:
+    # bearerAuth:
+    #   type: http
+    #   scheme: bearer
+    #   bearerFormat: JWT
+
+security:
+  # - bearerAuth: []
+
+definitions:
+  Status:
+    properties:
+      code:
+        type: number
+      error:
+        type: boolean
+      message:
+        type: string
+
+
+paths:
+  # /signup:
+  #   post:
+  #     tags:
+  #       - Auth
+  #     description: get all category
+  #     produces:
+  #       - application/json
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               email:
+  #                 type: string
+  #               password:
+  #                 type: string
+  #               userName:
+  #                 type: string
+
+  #     responses:
+  #       '200':
+  #         description: register successfully
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 message:
+  #                   type: string
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+
+  /login:
+    post:
+      tags:
+        - Auth
+      description: login
+      produces:
+        - application/json
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+
+      responses:
+        '200':
+          description: successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  token:
+                    type: string
+
+        '400':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/Status'
+                
+  # /get-me:
+  #   get:
+  #     tags:
+  #       - User
+  #     description: get user detail
+  #     produces:
+  #       - application/json
+
+  #     responses:
+  #       '200':
+  #         description: successfully get product
+  #         content:
+  #           application/json:
+  #             schema:
+  #               # allOf:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 data:
+  #                   type: object
+  #                   properties:
+  #                     friends:
+  #                       type: array
+  #                       items:
+  #                         type: object
+  #                         properties:
+  #                           _id:
+  #                             type: string
+  #                     _id:
+  #                       type: string
+  #                     email:
+  #                       type: string
+  #                     user_name:
+  #                       type: string
+  #                 message:
+  #                   type: string
+
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+
+  # /get-stranger-users:
+  #   get:
+  #     tags:
+  #       - User
+  #     description: detail product
+  #     produces:
+  #       - application/json
+  #     # parameters:
+  #     #   - name: productId
+  #     #     in: path
+  #     #     description:
+  #     #     required: true
+  #     #     schema:
+  #     #       type: string
+
+  #     responses:
+  #       '200':
+  #         description: successfully get product
+  #         content:
+  #           application/json:
+  #             schema:
+  #               # allOf:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 data:
+  #                   type: array
+  #                   items:
+  #                     type: object
+  #                     properties:
+  #                       _id:
+  #                         type: string
+  #                       email:
+  #                         type: string
+
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+
+  # /update-user:
+  #   put:
+  #     tags:
+  #       - User
+  #     description: update user
+  #     produces:
+  #       - application/json
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               avatarUrl:
+  #                 type: string
+  #               friend:
+  #                 type: string
+  #               password:
+  #                 type: string
+
+  #     responses:
+  #       '200':
+  #         description: successfully get comment
+  #         content:
+  #           application/json:
+  #             schema:
+  #               # allOf:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 data:
+  #                   type: object
+  #                   properties:
+  #                     friends:
+  #                       type: array
+  #                       items:
+  #                         type: object
+  #                         properties:
+  #                           _id:
+  #                             type: string
+  #                     email:
+  #                       type: string
+  #                     user_name:
+  #                       type: string
+  #                     avatar_url:
+  #                       type: string
+  #                     _id:
+  #                       type: string
+  #                 message:
+  #                   type: string
+
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+
+  # /create-post:
+  #   post:
+  #     tags:
+  #       - Post
+  #     description: create post
+  #     produces:
+  #       - application/json
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               title:
+  #                 type: string
+  #               content:
+  #                 type: string
+  #               location:
+  #                 type: string
+  #               imageUrl:
+  #                 type: string
+
+  #     responses:
+  #       '200':
+  #         description: successfully
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 message:
+  #                   type: string
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+  # /update-post:
+  #   put:
+  #     tags:
+  #       - Post
+  #     description: update post
+  #     produces:
+  #       - application/json
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               postId:
+  #                 type: string
+  #               title:
+  #                 type: string
+  #               like:
+  #                 type: string
+
+  #     responses:
+  #       '200':
+  #         description: successfully
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 message:
+  #                   type: string
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+  # /get-all-post:
+  #   get:
+  #     tags:
+  #       - Post
+  #     description: get all post
+  #     produces:
+  #       - application/json
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               limit:
+  #                 type: number
+  #               skip:
+  #                 type: number
+
+  #     responses:
+  #       '200':
+  #         description: successfully
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 data:
+  #                   type: object
+  #                   properties:
+  #                     location:
+  #                       type: string
+  #                     likes:
+  #                       type: array
+  #                       items:
+  #                         type: object
+  #                         properties:
+  #                           _id:
+  #                             type: string
+  #                     title:
+  #                       type: string
+  #                     content:
+  #                       type: string
+  #                     user_id:
+  #                       type: string
+  #                     image_url:
+  #                       type: string
+  #                     created_date:
+  #                       type: string
+  #                     _id:
+  #                       type: string
+  #                 message:
+  #                   type: string
+  #                 count:
+  #                   type: number
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'
+  # /post-delete-many:
+  #   delete:
+  #     tags:
+  #       - Post
+  #     description: get all post
+  #     produces:
+  #       - application/json
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             type: object
+  #             properties:
+  #               ids:
+  #                 type: array
+  #                 items:
+  #                   type: string
+
+  #     responses:
+  #       '200':
+  #         description: successfully
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 result:
+  #                   type: string
+  #                 message:
+  #                   type: string
+  #       '400':
+  #         description: Error
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/definitions/Status'

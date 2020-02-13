@@ -159,7 +159,7 @@ exports.update_user = async (req, res, next) => {
     res.json({
       result: "failed",
       data: {},
-      message: "You must enter postId to update"
+      message: "You must enter userId to update"
     });
   }
 
