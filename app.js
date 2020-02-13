@@ -32,43 +32,7 @@ mongoose.connect('mongodb://localhost:27017/socialMongoDB', options).then(
   }
 );
 
-// bypass cors
-const whitelist = [
-  'http://127.0.0.1:3000',
-  'http://127.0.0.1:3001',
-  'http://127.0.0.1:3002',
-  'http://127.0.0.1:5000',
-  'http://127.0.0.1:5001',
-  'http://localhost:4000',
-  'http://localhost:4001',
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:3002',
-  'http://localhost:5000',
-  'http://localhost:5001',
-  'http://localhost:8080',
-  'http://localhost:8181'
-];
-if (process.env.APP_URL) {
-  whitelist.push(process.env.APP_URL);
-}
-if (process.env.WHITE_LIST && typeof process.env.WHITE_LIST === 'string') {
-  const whiteListEnv = process.env.WHITE_LIST.split(',');
-  _.forEach(whiteListEnv, (value) => {
-    whitelist.push(value);
-  });
-}
-const corsOptions = {
-  origin(origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin || !helper.isURL(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
