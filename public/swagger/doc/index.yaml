@@ -7,7 +7,7 @@ info:
       name: Example
       url: 'https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.0'
 servers:
-  - url: http://hungvu.net
+  - url: https://hungvu.net
     description: API
 components:
   securitySchemes:
