@@ -202,7 +202,7 @@ exports.update_user = async (req, res, next) => {
 exports.get_stranger_users = async (req, res, next) => {
   try {
     const curUser = await User.findById(req.userData.userId).exec();
-    const users = await User.find({ '_id': { $nin: [...curUser.friends, req.userData.userId] } }).limit(100).sort({ email: 1 }).select({ email: 1 }).exec()
+    const users = await User.find({ '_id': { $nin: [...curUser.friends, req.userData.userId] } }).limit(100).sort({ email: 1 }).select("_id email user_name avatar_url").exec()
     res.json({
       result: "ok",
       data: users,

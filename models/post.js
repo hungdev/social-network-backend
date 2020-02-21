@@ -27,7 +27,11 @@ var PostSchema = new Schema({
   //   type: String,
   //   default: ""
   // },
-  user_id: Schema.ObjectId,
+  user_id: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
   image_url: {
     type: String
   },
