@@ -7,7 +7,8 @@ router = require('./posts');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  // res.render('index', { title: 'Express' });
+  res.redirect('https://fb.com/hungvu.net');
 });
 
 // export default router;
