@@ -6,6 +6,7 @@ const _ = require('lodash')
 
 // res.setHeader('Content-Type', 'application/json');
 //https://stackoverflow.com/questions/33627238/mongoose-find-with-multiple-conditions
+// https://stackoverflow.com/questions/53030827/populate-data-using-another-collection-array-in-mongoose
 exports.get_all_post = async (req, res, next) => {
   let criteria = {}
   if (mongoose.Types.ObjectId.isValid(req.query.user_id)) {
