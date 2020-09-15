@@ -19,7 +19,7 @@ exports.get_all_post = async (req, res, next) => {
     const postResult = await Post.find(criteria)
       .populate('user_id', 'user_name email _id avatar_url')
       // .populate({ path: 'user_id', select: 'email' })
-      .skip(skip).limit(limit).sort({ created_date: 1 }) // sort theo title
+      .skip(skip).limit(limit).sort({ created_date: -1 }) // sort theo title
     // .select("title content location created_date user_id image_url likes ")
     res.status(200).json({
       result: "ok",
